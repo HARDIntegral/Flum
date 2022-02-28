@@ -1,0 +1,5 @@
+using { print } std::io;
+
+func main() -> void {
+    print("I sure hope this works!\n");
+} 

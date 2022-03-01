@@ -1,3 +1,5 @@
+#include <string.h>
+
 #include "list.h"
 
 static node* generate_node(void* data);

@@ -26,13 +26,13 @@ DEPS := $(patsubst %.o, %.d, $(OBJS))
 DEP_FLAGS = -MMD -MF $(@:.o=.d) 
 
 build_debug: $(OBJS)
-	@echo "D" > .tmp_data
+	@echo "D" > bin/.tmp_data
 	@echo [INFO] Creating Static Library [$(BUILD_TARGET)] with Debug Flags ...
 	@$(CC) -o $(BUILD) $^
 	@echo [INFO] [$(EXEC)] Created with Debug Flags!
 	
 build_release: $(OBJS)
-	@echo "" > .tmp_data
+	@echo "" > bin/.tmp_data
 	@echo [INFO] Creating Static Library [$(BUILD_TARGET)] ...
 	@$(CC) -o $(BUILD) $^
 	@echo [INFO] [$(EXEC)] Created!

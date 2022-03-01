@@ -27,6 +27,7 @@ char** get_raw_lines(const char* filename, size_t* num_lines) {
         char* tmp_buffer = (char*)malloc(sizeof(char)*strlen(line_buffer));
         strcpy(tmp_buffer, line_buffer);       
         raw_lines[i] = tmp_buffer;       
+        line_buffer = NULL;
     }
     fclose(f);
     (*num_lines)--;

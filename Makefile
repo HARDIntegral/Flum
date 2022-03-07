@@ -26,13 +26,13 @@ DEPS := $(patsubst %.o, %.d, $(OBJS))
 DEP_FLAGS = -MMD -MF $(@:.o=.d) 
 
 build_debug: $(OBJS)
-	@echo "D" > bin/.tmp_data
+	@echo "D" > .tmp_data
 	@echo [INFO] Creating Static Library [$(BUILD_TARGET)] with Debug Flags ...
 	@$(CC) -o $(BUILD) $^
 	@echo [INFO] [$(EXEC)] Created with Debug Flags!
 	
 build_release: $(OBJS)
-	@echo "" > bin/.tmp_data
+	@echo "" > .tmp_data
 	@echo [INFO] Creating Static Library [$(BUILD_TARGET)] ...
 	@$(CC) -o $(BUILD) $^
 	@echo [INFO] [$(EXEC)] Created!
@@ -40,7 +40,7 @@ build_release: $(OBJS)
 $(OBJ_DIR)%.o: $(SRC_DIR)%$(FILE_TYPE)
 	@echo [CC] $<
 	@mkdir -p $(@D)
-ifeq ($(shell cat bin/.tmp_data),D)
+ifeq ($(shell cat .tmp_data),D)
 	@$(CC) $(DEBUG_FLAGS) $< -c -o $@ -I headers $(DEP_FLAGS)
 else
 	@$(CC) $(RELEASE_FLAGS) $< -c -o $@ -I headers $(DEP_FLAGS) 
